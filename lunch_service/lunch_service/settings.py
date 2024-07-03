@@ -6,14 +6,14 @@ env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-SECRET_KEY = 'django-insecure-av2^#d8u=to5qfxgm&r3g11ozhnonf3noj_i!@$%cc$3!38_(r'
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
+DEBUG = bool(env('DEBUG', default=False))
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -39,6 +39,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'lunch_service.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
 
 TEMPLATES = [
     {
@@ -103,15 +110,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# AUTH_USER_MODEL = 'accounts.AppUser'
+AUTH_USER_MODEL = 'accounts.CasualUser'
 #
 #
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     )
-# }
-#
+
 #
 # import datetime
 #
