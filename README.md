@@ -6,7 +6,7 @@ INSTALL Packeges:
 
 ``pip install -r requirements.txt``
 
-CREATE .env file :
+Config .docker.env file :
 ```
 SECRET_KEY=""
 DEBUG=""

@@ -1,11 +1,13 @@
 services:
   db:
     image: postgres:10-alpine
+    restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD=password
-  dm_web:
+      -POSTGRES_PASSWORD=password
+  web:
+    env_file: '.docker.env'
     build: .
     command:  bash -c "python /usr/src/dm_rest/manage.py migrate --noinput &&
                       python /usr/src/dm_rest/manage.py runserver 0.0.0.0:8000"

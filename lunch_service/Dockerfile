@@ -8,7 +8,7 @@ USER newuser
 WORKDIR /usr/src/proj
 
 COPY requirements.txt /usr/requirements.txt
-COPY ./.env /usr/src/proj
+COPY .docker.env /usr/src/proj
 RUN pip install -r /usr/requirements.txt
 
 COPY . /usr/src/proj
