@@ -21,11 +21,11 @@ PORT=""
 ```
 
 ## How to run the system:
-## 1.Clone code
+ 1.Clone code
 
-## 2.Go to application root folder: "/lunch_service"
+ 2.Go to application root folder: "/lunch_service"
 
-## 3. Create .env file with your Django secret key(SECRET_KEY=<your secret key>)
+ 3. Create .env file with your Django secret key(SECRET_KEY=<your secret key>)
 Run`` "sudo docker-compose up"``
 CREATE POSTGRES DATABASE: 
 
