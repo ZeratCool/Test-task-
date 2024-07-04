@@ -15,14 +15,15 @@ services:
   web:
     build: .
     command: >
-      bash -c "apt-get update && apt-get install -y wait-for-it &&
-               wait-for-it postgres-db:5432 -- python /usr/src/jjj/manage.py migrate --noinput &&
+      bash -c "python /usr/src/jjj/manage.py migrate --noinput &&
                python /usr/src/jjj/manage.py runserver 0.0.0.0:8000"
 
     volumes:
       - .:/usr/src/jjj
     ports:
       - "8000:8000"
+    env_file:
+      - .docker.env
     environment:
       DB_NAME: postgres
       DB_USER: postgres
