@@ -15,9 +15,10 @@ services:
   web:
     build: .
     command: >
-      bash -c "while !</dev/tcp/postgres/5432; do sleep 1; done;
-               python /usr/src/jjj/manage.py migrate --noinput &&
+      bash -c "apt-get update && apt-get install -y wait-for-it &&
+               wait-for-it postgres-db:5432 -- python /usr/src/jjj/manage.py migrate --noinput &&
                python /usr/src/jjj/manage.py runserver 0.0.0.0:8000"
+
     volumes:
       - .:/usr/src/jjj
     ports:
