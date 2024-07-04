@@ -1,28 +1,35 @@
-version: '3.8'
+version: '3.7'
 
 services:
-  db:
-    image: postgres:10-alpine
-    restart: always
+  postgres-db:
+    image: postgres:latest
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
 
   web:
-    env_file: .docker.env
     build: .
-    command: bash -c "python /usr/src/proj/manage.py migrate --noinput && python /usr/src/proj/manage.py runserver 0.0.0.0:8000"
+    command: >
+      bash -c "while !</dev/tcp/postgres/5432; do sleep 1; done;
+               python /usr/src/jjj/manage.py migrate --noinput &&
+               python /usr/src/jjj/manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/usr/src/proj
+      - .:/usr/src/jjj
     ports:
-      - 8000:8000
+      - "8000:8000"
     environment:
-      - POSTGRES_NAME=lunch_service
-      - POSTGRES_USER=lunch_service_user
-      - POSTGRES_PASSWORD=password
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres-db
+      DB_PORT: 5432
     depends_on:
-      - db
+      - postgres-db
 
 volumes:
   postgres_data:

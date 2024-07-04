@@ -12,7 +12,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = bool(env('DEBUG', default=False))
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "accounts",
     'api',
     'rest_framework.authtoken',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -74,13 +75,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'lunch_service.wsgi.application'
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
-        'PASSWORD': env('PSW'),
-        'HOST': env('HOST'),
-        'PORT': env('PORT'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
