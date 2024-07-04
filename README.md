@@ -6,6 +6,20 @@ INSTALL Packeges:
 
 ``pip install -r requirements.txt``
 
+CREATE .env file :
+```
+SECRET_KEY=""
+DEBUG=""
+
+#DB
+DB_NAME=""
+DB_USER=""
+PSW=""
+HOST=""
+PORT=""
+
+```
+
 CREATE POSTGRES DATABASE: 
 
 ```
@@ -23,23 +37,7 @@ GRANT ALL PRIVILEGES ON DATABASE lunch_service TO lunch_service_user;
 
 \q
 ```
-CHANGE settings.py:
-```
-. . .
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env('DB_NAME'),
-        "USER": env('DB_USER'),
-        "PASSWORD": env('PSW'),
-        "HOST": env('HOST'),
-        "PORT": env('PORT'),
-    }
-}
-
-. . .
-```
 CREATE SUPER USER :
 
 ``make superuser

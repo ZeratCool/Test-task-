@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:10-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD=password
+  dm_web:
+    build: .
+    command:  bash -c "python /usr/src/dm_rest/manage.py migrate --noinput &&
+                      python /usr/src/dm_rest/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/usr/src/proj
+    ports:
+      - 8000:8000
+    environment:
+      -POSTGRES_NAME=lunch_service
+      -POSTGRES_USER=lunch_service_user
+      -POSTGRES_PASSWORD=password
+    depends_on:
+      - db
+volumes:
+  postgres_data:
