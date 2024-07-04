@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 
-from accounts.models import CasualUser
+from accounts.models import UserData
 
 
 class Restaurant(models.Model):
@@ -37,9 +37,10 @@ class Vote(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=
                                     models.CASCADE, blank=True, null=True)
 
-    user = models.ForeignKey(CasualUser, on_delete=
+    user = models.ForeignKey(UserData, on_delete=
                                     models.CASCADE, blank=True, null=True)
 
+    date = models.DateField(verbose_name="date", auto_now_add=True)
     class Meta:
         verbose_name = "Vote"
         verbose_name_plural = "Votes"

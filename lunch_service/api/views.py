@@ -24,6 +24,7 @@ class AddingMenuViewSet(viewsets.ModelViewSet):
     lookup_field = "id"
 
 
+
 class RestaurantViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Restaurant.objects.all()
     permission_classes = (IsAuthenticated,)
@@ -42,9 +43,8 @@ class MenuViewSet(viewsets.ReadOnlyModelViewSet):
         return queryset
 
 
-
-# class VoteViewSet(viewsets.ModelViewSet):
-#     queryset = Vote.objects.all()
-#     permission_classes = (IsAdminUser, )I
-#     # serializer_class =
-#     lookup_field = "id"
+class UpdateView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Restaurant.objects.all()
+    permission_classes = (IsAdminUser,)
+    serializer_class = AddRestaurantSerializer
+    lookup_field = "id"

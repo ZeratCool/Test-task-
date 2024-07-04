@@ -10,12 +10,16 @@ class RestaurantSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class MenuSerializer(serializers.ModelSerializer):
-    restaurant = RestaurantSerializer()
+class TotalMenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields = '__all__'
 
+class MenuSerializer(serializers.ModelSerializer):
+    restaurant = RestaurantSerializer
+    class Meta:
+        model = Menu
+        fields = '__all__'
 
 class AddRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +38,9 @@ class AddingMenuSerializer(serializers.ModelSerializer):
             return Restaurant.objects.create(**validated_data)
 
 class RestaurantMenuSerializer(serializers.ModelSerializer):
-    menu = MenuSerializer(many=True)
+    menu = TotalMenuSerializer(many=True)
     class Meta:
         model = Restaurant
         fields = '__all__'
+
+
