@@ -18,9 +18,9 @@ DEBUG=""   #default=False
 #DB # add this only if you run localy
 DB_NAME=""
 DB_USER=""
-PSW=""
-HOST=""
-PORT=""
+DB_PASSWORD=""
+DB_HOST=""
+DB_PORT=""
 
 ```
 
