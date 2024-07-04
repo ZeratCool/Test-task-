@@ -1,17 +1,21 @@
-## CREATE ENVIROMENT:
+# TASK:
 
-``python -m venv venv`` 
+A company needs internal service for its employees which helps them to
+make a decision at the lunch place. Each restaurant will be uploading menus
+using the system every day over API.
+Employees will vote for the menu before leaving for lunch on a mobile app
+for whom the backend has to be implemented. There are users who did not
+update the app to the latest version and the backend has to support both
+versions. The mobile app always sends the build version in headers
 
-## INSTALL Packeges:
 
-``pip install -r requirements.txt``
 
 ## Config .docker.env file :
 ```
 SECRET_KEY=""
-DEBUG=""
-
-#DB
+DEBUG=""   #default=False 
+ 
+#DB # add this only if you run localy
 DB_NAME=""
 DB_USER=""
 PSW=""
@@ -22,16 +26,15 @@ PORT=""
 
 ## How to run the system:
  1.Clone code
-
  2.Go to application root folder: "/lunch_service"
 
- 3. Create .env file with your Django secret key(SECRET_KEY=<your secret key>)
-Run`` "sudo docker-compose up"``
-CREATE POSTGRES DATABASE: 
+ 3.Run`` "sudo docker-compose up"``
+ 4. link to web app by this: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+#CREATE POSTGRES DATABASE:   
 
-
-## If run localy
 ```
+#Do it only if you run localy#
+ 
 sudo -u postgres psql
 ======================
 
@@ -48,14 +51,32 @@ GRANT ALL PRIVILEGES ON DATABASE lunch_service TO lunch_service_user;
 ```
 
 CREATE SUPER USER :
+```
+make superuser
+#IF use Docker:
+sudo docker exec -it &lt;name from first paragraph&gt;
+make superuser
+```
+**Important that for Authentication use email and password** 
 
-``make superuser
-``
 
-Do migration:
 
-`` make migrate``
+## All API manipulation works only by JWT(JSON Web Token)
 
-Start app :
+1.Register users with privileges or none: ``account/register/`` 
+2.Create restaurant: ``api/restaurants/add``
+3.Update restaurant: ``api/restaurant/<ID_RESTAURANT>/update/``
+4.Add menu : ``api/add_menu`` 
 
-``make run``
+# Run tests:
+
+1.Virtual enviroment
+```
+python -m venv venv
+sourse/venv/bin/activate
+```
+2.Go to main folder ``cd ./lunch_service``
+3. Config .env file
+4. ``pip install -r requirements.txt``
+4. Go to test folder: ``cd /tests/``
+5. Run ``pytest``
