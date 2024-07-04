@@ -75,8 +75,13 @@ make superuser
 python -m venv venv
 sourse/venv/bin/activate
 ```
+
 2.Go to main folder ``cd ./lunch_service``
+
 3. Config .env file
+
 4. ``pip install -r requirements.txt``
-4. Go to test folder: ``cd /tests/``
-5. Run ``pytest``
+
+5. Go to test folder: ``cd /tests/``
+
+6. Run ``pytest``
