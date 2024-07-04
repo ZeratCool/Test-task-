@@ -1,12 +1,12 @@
-CREATE ENVIROMENT:
+## CREATE ENVIROMENT:
 
 ``python -m venv venv`` 
 
-INSTALL Packeges:
+## INSTALL Packeges:
 
 ``pip install -r requirements.txt``
 
-Config .docker.env file :
+## Config .docker.env file :
 ```
 SECRET_KEY=""
 DEBUG=""
@@ -20,19 +20,23 @@ PORT=""
 
 ```
 
-How to run the system:
-Clone code
-Go to application root folder: "/(lunch_service)"
-Create .env file with your Django secret key(SECRET_KEY=<your secret key>)
-Run "sudo docker-compose up"
+## How to run the system:
+ 1.Clone code
+
+ 2.Go to application root folder: "/lunch_service"
+
+ 3. Create .env file with your Django secret key(SECRET_KEY=<your secret key>)
+Run`` "sudo docker-compose up"``
 CREATE POSTGRES DATABASE: 
 
+
+## If run localy
 ```
 sudo -u postgres psql
 ======================
 
-CREATE DATABASE lunch_service;
-CREATE USER lunch_service_user WITH PASSWORD 'password';
+CREATE DATABASE my project;
+CREATE USER postgres WITH PASSWORD 'postgres';
 
 ALTER ROLE lunch_service_user SET client_encoding TO 'utf8';
 ALTER ROLE lunch_service_user SET default_transaction_isolation TO 'read committed';
