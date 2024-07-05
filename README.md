@@ -30,6 +30,7 @@ DB_PORT=""
 
  3.Run`` "sudo docker-compose up"``
  4. link to web app by this: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+ 
 #CREATE POSTGRES DATABASE:   
 
 ```
