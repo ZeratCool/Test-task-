@@ -64,9 +64,13 @@ make superuser
 ## All API manipulation works only by JWT(JSON Web Token)
 
 1.Register users with privileges or none: ``account/register/`` 
+
 2.Create restaurant: ``api/restaurants/add``
+
 3.Update restaurant: ``api/restaurant/<ID_RESTAURANT>/update/``
+
 4.Add menu : ``api/add_menu`` 
+
 
 # Run tests:
 
