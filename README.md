@@ -46,7 +46,7 @@ ALTER ROLE myuser SET client_encoding TO 'utf8';
 ALTER ROLE myuser SET default_transaction_isolation TO 'read committed';
 ALTER ROLE myuser SET timezone TO 'UTC';
 
-GRANT ALL PRIVILEGES ON DATABASE lunch_service TO lunch_service_user;
+GRANT ALL PRIVILEGES ON DATABASE my_project TO myuser;
 
 \q
 ```
