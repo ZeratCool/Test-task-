@@ -39,7 +39,7 @@ DB_PORT=""
 sudo -u postgres psql
 ======================
 
-CREATE DATABASE my project;
+CREATE DATABASE my_project;
 CREATE USER myuser WITH PASSWORD 'postgres';
 
 ALTER ROLE myuser SET client_encoding TO 'utf8';
