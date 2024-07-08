@@ -40,11 +40,11 @@ sudo -u postgres psql
 ======================
 
 CREATE DATABASE my project;
-CREATE USER postgres WITH PASSWORD 'postgres';
+CREATE USER myuser WITH PASSWORD 'postgres';
 
-ALTER ROLE lunch_service_user SET client_encoding TO 'utf8';
-ALTER ROLE lunch_service_user SET default_transaction_isolation TO 'read committed';
-ALTER ROLE lunch_service_user SET timezone TO 'UTC';
+ALTER ROLE myuser SET client_encoding TO 'utf8';
+ALTER ROLE myuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE myuser SET timezone TO 'UTC';
 
 GRANT ALL PRIVILEGES ON DATABASE lunch_service TO lunch_service_user;
 
