@@ -11,4 +11,4 @@ WORKDIR /usr/src/jjj
 COPY ./requirements.txt /usr/requirements.txt
 RUN pip install -r /usr/requirements.txt
 
-COPY . /usr/src/dm_rest
+COPY . /usr/src/jjj
