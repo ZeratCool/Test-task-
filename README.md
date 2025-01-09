@@ -1,13 +1,5 @@
 # TASK:
 
-A company needs internal service for its employees which helps them to
-make a decision at the lunch place. Each restaurant will be uploading menus
-using the system every day over API.
-Employees will vote for the menu before leaving for lunch on a mobile app
-for whom the backend has to be implemented. There are users who did not
-update the app to the latest version and the backend has to support both
-versions. The mobile app always sends the build version in headers
-
 
 
 ## Config .docker.env file :
